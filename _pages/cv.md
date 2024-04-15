@@ -16,9 +16,9 @@ redirect_from:
 ## Research assistant
 **Technische Universität Dresden (Germany)** <br>
 _October 2019 - June 2022_ <br>
-Researcher in the Integrated Photonic Devices (IPD) group <br>
+Researcher in the Integrated Photonic Devices group <br>
 - Participated in research work
-- Developed a user-friendly Lugiato-Lefever Equation (LLE) [solver](https://github.com/LuisAngelMendozaVelasco/Lugiato-Lefever_Equation_Solver)
+- Developed a user-friendly [Lugiato-Lefever Equation solver](https://github.com/LuisAngelMendozaVelasco/Lugiato-Lefever_Equation_Solver)
 - Data processing and visualization
 - Performed photonics simulations
 - Worked in photonics Lab
@@ -60,7 +60,7 @@ IBM Skills Network
 UC San Diego
 
 - **Building Modern Python Applications on AWS** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/AWS_Courses/tree/main/Building_Modern_Python_Applications_on_AWS"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/3T4HWM32XFXM"></a><br>
-Amazon Web Services (AWS)
+Amazon Web Services
 
 - **CPA - Programming Essentials in C++** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/CPA-Programming_Essentials_in_Cpp"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://drive.google.com/file/d/11xa3ecjyaJNoVRqXIZH4VJ2hRgkCoZxI/view?usp=share_link"></a><br>
 Cisco Networking Academy
@@ -87,7 +87,7 @@ MathWorks
 Cornell University
 
 - **Getting Started with AWS Machine Learning** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/AWS_Courses/tree/main/Getting_Started_with_AWS_Machine_Learning"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/share/5496498bffa8961611b549b77ce6efda"></a><br>
-Amazon Web Services (AWS)
+Amazon Web Services
 
 - **Google IT Automation with Python Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Google_IT_Automation_with_Python_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/RGKPVN3AY4L8"></a><br>
 Google
@@ -114,13 +114,13 @@ Cisco Networking Academy
 Cisco Networking Academy
 
 - **LabVIEW Core 1** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://ti-user-certificates.s3.amazonaws.com/a6655c36-914e-4ade-bb96-3259b1164b7a/6f507ab8-15b8-4fa7-8848-62e48426ad4b-luis-angel-mendoza-velasco-labview-core-1-english-2019-certificate.pdf"></a><br>
-NI (National Instruments)
+National Instruments
 
 - **LabVIEW Core 2** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://ti-user-certificates.s3.amazonaws.com/a6655c36-914e-4ade-bb96-3259b1164b7a/6f507ab8-15b8-4fa7-8848-62e48426ad4b-luis-angel-mendoza-velasco-labview-core-2-english-2019-certificate.pdf"></a><br>
-NI (National Instruments)
+National Instruments
 
 - **LabVIEW Core 3** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://ti-user-certificates.s3.amazonaws.com/a6655c36-914e-4ade-bb96-3259b1164b7a/6f507ab8-15b8-4fa7-8848-62e48426ad4b-luis-angel-mendoza-velasco-labview-core-3-english-2016-certificate.pdf"></a><br>
-NI (National Instruments)
+National Instruments
 
 - **Machine Learning on Google Cloud Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Machine_Learning_on_Google_Cloud_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/94MNM9YUTNDN"></a><br>
 Google Cloud Education
