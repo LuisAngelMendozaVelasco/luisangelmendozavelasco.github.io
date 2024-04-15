@@ -107,7 +107,10 @@ MathWorks
 - **Introduction to the Internet of Things and Embedded Systems** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/share/40ab5ee325bad3cf95a469c7b9a3b5fd"></a><br>
 UC Irvine
 
-- **JavaScript Essentials** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/JavaScript_Essentials"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://drive.google.com/file/d/12cjje87hfxL7T7Cuw_w3_3daAJenkXGq/view?usp=share_link"></a><br>
+- **JavaScript Essentials 1** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/JavaScript_Essentials/tree/main/JavaScript_Essentials_1"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://drive.google.com/file/d/12cjje87hfxL7T7Cuw_w3_3daAJenkXGq/view?usp=share_link"></a><br>
+Cisco Networking Academy
+
+- **JavaScript Essentials 2** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/JavaScript_Essentials/tree/main/JavaScript_Essentials_2"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://drive.google.com/file/d/18C3IKA5Vu-aWfPmFLW2OeiZ-gJ9cj8rY/view?usp=share_link"></a><br>
 Cisco Networking Academy
 
 - **LabVIEW Core 1** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://ti-user-certificates.s3.amazonaws.com/a6655c36-914e-4ade-bb96-3259b1164b7a/6f507ab8-15b8-4fa7-8848-62e48426ad4b-luis-angel-mendoza-velasco-labview-core-1-english-2019-certificate.pdf"></a><br>
@@ -142,6 +145,9 @@ MathWorks
 
 - **Python for Everybody Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Python_for_Everybody_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/RRBCW3RGQUXQ"></a><br>
 University of Michigan
+
+- **Robotics Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Robotics_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/6TWA58JCTL8X"></a><br>
+University of Pennsylvania
 
 - **Self-Driving Cars Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Self-Driving_Cars_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/7BZ7J5N2F9NW"></a><br>
 University of Toronto
