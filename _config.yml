@@ -21,7 +21,7 @@ repository               : "LuisAngelMendozaVelasco/luisangelmendozavelasco.gith
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "photo.png"
   name             : "Luis Angel Mendoza Velasco" # "Your Sidebar Name"
   pronouns         : # example: "she/her"  
   bio              : "Mechatronics engineer from Mexico 🇲🇽" # "Short biography for the left-hand sidebar"
