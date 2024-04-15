@@ -21,7 +21,7 @@ repository               : "LuisAngelMendozaVelasco/luisangelmendozavelasco.gith
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "photo.png"
+  avatar           : "photo.jpg"
   name             : "Luis Angel Mendoza Velasco" # "Your Sidebar Name"
   pronouns         : # example: "she/her"  
   bio              : "Mechatronics engineer from Mexico 🇲🇽" # "Short biography for the left-hand sidebar"
@@ -107,6 +107,7 @@ staticman:
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
 atom_feed:
+  hide                   : false     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
 
 
