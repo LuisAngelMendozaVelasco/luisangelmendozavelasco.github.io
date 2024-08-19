@@ -158,6 +158,9 @@ MathWorks
 - **TensorFlow: Data and Deployment Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Data_and_Deployment_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/ZNVAS7T55889"></a><br>
 DeepLearning.AI
 
+- **TensorFlow Developer Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow_Developer_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/7PCBV5PXDZ9F"></a><br>
+DeepLearning.AI
+
 - **Virtual Reality Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Virtual_Reality_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/CMVDT7XKUJ3R"></a><br>
 University of London
 

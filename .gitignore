@@ -7,6 +7,12 @@ local/
 # Ignore the Gemfile that is generated
 Gemfile.lock
 
-# Ingore files created by npm
+# Ignore files created by npm
 node_modules
 package-lock.json
+
+# Ignore directory created by python
+__pycache__/
+
+# Ignore directory created by vscode
+.vscode/
