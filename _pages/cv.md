@@ -89,6 +89,9 @@ Cornell University
 - **Getting Started with AWS Machine Learning** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/AWS_Courses/tree/main/Getting_Started_with_AWS_Machine_Learning"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/share/5496498bffa8961611b549b77ce6efda"></a><br>
 Amazon Web Services
 
+- **Google Cybersecurity Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Google_Cybersecurity_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/W3UWSH5UDSF2"></a><br>
+Google
+
 - **Google IT Automation with Python Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Google_IT_Automation_with_Python_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/RGKPVN3AY4L8"></a><br>
 Google
 
@@ -143,6 +146,9 @@ MathWorks
 - **MATLAB for Data Processing and Visualization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/MATLAB_for_Data_Processing_and_Visualization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=721c9da1-e802-4607-aed0-100633963622"></a><br>
 MathWorks
 
+- **Open Source Software Development, Linux and Git Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Open_Source_Software_Development_Linux_and_Git_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/WXM6K6VR6195"></a><br>
+The Linux Foundation
+
 - **Python for Everybody Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Python_for_Everybody_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/RRBCW3RGQUXQ"></a><br>
 University of Michigan
 
@@ -154,6 +160,9 @@ University of Toronto
 
 - **Signal Processing with MATLAB** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/Signal_Processing_with_MATLAB"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=7a75b3ce-4738-4095-a927-bdae9df4a8a4&"></a><br>
 MathWorks
+
+- **TensorFlow: Advanced Techniques** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Advanced_Techniques_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/EC41HMPTORIC"></a><br>
+DeepLearning.AI
 
 - **TensorFlow: Data and Deployment Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Data_and_Deployment_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/ZNVAS7T55889"></a><br>
 DeepLearning.AI
