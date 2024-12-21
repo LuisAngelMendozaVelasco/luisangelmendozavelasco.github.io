@@ -166,6 +166,10 @@ University of London
 
 # Publications
 
+- **Three-wavelengths integrated SiN optical phased array for LiDAR and FSO data link applications** <br>
+Optics Express (2024) <br> 
+[https://doi.org/10.1364/OE.538606](https://doi.org/10.1364/OE.538606)
+
 - **Efficiency comparison for frequency comb formations in a silicon nitride microring within anomalous dispersion regime** <br>
 Optics Continuum (2022) <br> 
 [https://doi.org/10.1364/OPTCON.458326](https://doi.org/10.1364/OPTCON.458326)
