@@ -86,6 +86,9 @@ MathWorks
 - **ENGR2000X: A Hands-on Introduction to Engineering Simulations** <!--<a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href=""></a>--><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://courses.edx.org/certificates/037db951497e49f7a3e8aee1a8888eb9"></a><br>
 Cornell University
 
+- **Generative Adversarial Networks Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_Adversarial_Networks_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/XUNUKBF78WM8"></a><br>
+DeepLearning.AI
+
 - **Getting Started with AWS Machine Learning** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/AWS_Courses/tree/main/Getting_Started_with_AWS_Machine_Learning"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/share/5496498bffa8961611b549b77ce6efda"></a><br>
 Amazon Web Services
 
