@@ -201,3 +201,5 @@ IEEE Photonics Journal (2021) <br>
 - **An Overview of Integrated Photonic Devices for Energy Efficient Transmitters used in Optical Interconnects** <br>
 International Conference on Transparent Optical Networks (2020) <br> 
 [https://doi.org/10.1109/ICTON51198.2020.9203109](https://doi.org/10.1109/ICTON51198.2020.9203109)
+
+<!-- Modified by Luis Mendoza -->
