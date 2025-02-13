@@ -14,3 +14,5 @@ I'm a mechatronics engineer who is interested in data science, machine learning,
 Here you'll find my experiences and discoveries learning these technologies and stuff related to STEM. 📐e = ∑∞ⁿ⁼⁰ ¹ₙ🤓 
 
 You'll also find a showcase of my academic background and how to get in touch with me. 💬
+
+<!-- Modified by Luis Mendoza -->

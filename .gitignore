@@ -1,5 +1,6 @@
-# Ignore the contents of the _site directory
+# Ignore the contents of the _site directory and other cache directories
 _site/
+.sass-cache/
 
 # Ignore the directory for local files during development
 local/
@@ -16,3 +17,5 @@ __pycache__/
 
 # Ignore directory created by vscode
 .vscode/
+
+# Modified by Luis Mendoza
