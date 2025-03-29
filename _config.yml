@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Luis Mendoza" # "Your Name / Site Title"
+title                    : "Luis Angel Mendoza Velasco" # "Your Name / Site Title"
 title_separator          : "-"
 name                     : &name "Luis Angel Mendoza Velasco" # "Your Name"
 description              : &description "Personal website" # "personal description"
@@ -25,8 +25,8 @@ author:
   avatar           : "photo.jpg"
   name             : "Luis Angel Mendoza Velasco" # "Your Sidebar Name"
   pronouns         : # example: "she/her"  
-  bio              : "Mechatronics engineer from Mexico 🇲🇽" # "Short biography for the left-hand sidebar"
-  location         : "Mexico" # "Earth"
+  bio              : "Mechatronics Engineer" # "Short biography for the left-hand sidebar"
+  location         : "Mexico 🇲🇽" # "Earth"
   employer         : # "Red Brick University"
   uri              : # URL
   email            : "luisangel.mendozavelasco@outlook.com" # "none@example.org" 

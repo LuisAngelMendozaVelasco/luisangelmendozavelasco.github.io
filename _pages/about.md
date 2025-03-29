@@ -1,18 +1,20 @@
 ---
 permalink: /
-title: "Hi there, I'm Luis Mendoza! 👋🏼" # "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About Me" # "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Welcome to my personal website! 😄 
+Hi there, I'm Luis Mendoza! 👋🏼
 
-I'm a mechatronics engineer who is interested in data science, machine learning, and artificial intelligence. 🤖
+I'm a Mechatronics Engineer interested in Cybersecurity, Software Engineering, Robotics, Data Science, and Artificial Intelligence.
 
-Here you'll find my experiences and discoveries learning these technologies and stuff related to STEM. 📐e = ∑∞ⁿ⁼⁰ ¹ₙ🤓 
+Here you'll find my experiences learning and working in these Computer Science fields.
 
-You'll also find a showcase of my academic background and how to get in touch with me. 💬
+You'll also find information about my academic background and how to contact me.
+
+![programming_gif](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*VMmvImch6VU5pc2VktY1uw.gif)
 
 <!-- Modified by Luis Mendoza -->
