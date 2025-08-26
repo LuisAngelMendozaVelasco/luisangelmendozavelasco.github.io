@@ -1,3 +1,5 @@
+# Modified by https://github.com/LuisAngelMendozaVelasco
+
 # Ignore the contents of the _site directory and other cache directories
 _site/
 .sass-cache/
@@ -12,10 +14,12 @@ Gemfile.lock
 node_modules
 package-lock.json
 
-# Ignore directory created by python
-__pycache__/
+# Ignore the vendor file and bundle for alternative installation
+vendor/
+.bundle/
 
-# Ignore directory created by vscode
+# Ignore folders related to IDEs
 .vscode/
 
-# Modified by Luis Mendoza
+# Ignore directory created by python
+__pycache__/
