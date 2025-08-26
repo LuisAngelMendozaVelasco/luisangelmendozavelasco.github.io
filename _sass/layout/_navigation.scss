@@ -1,3 +1,5 @@
+// Modified by https://github.com/LuisAngelMendozaVelasco
+
 /* ==========================================================================
    NAVIGATION
    ========================================================================== */
@@ -84,7 +86,7 @@
       text-align: center;
       text-decoration: none;
       color: var(--global-text-color-light);
-      border: 1px solid var(var(--global-border-color));
+      border: 1px solid var(--global-border-color);
       border-radius: 0;
 
       &:hover {
@@ -132,7 +134,7 @@
     text-align: center;
     text-decoration: none;
     color: var(--global-text-color-light);
-    border: 1px solid var(var(--global-border-color));
+    border: 1px solid var(--global-border-color);
     border-radius: $border-radius;
 
     &:hover {
@@ -222,6 +224,15 @@
         a {
           margin-right: 0;
         }
+      }
+    }
+
+    #theme-toggle {
+      a {
+        width: 25px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
       }
     }
 
@@ -433,5 +444,3 @@
     }
   }
 }
-
-// Modified by Luis Mendoza
