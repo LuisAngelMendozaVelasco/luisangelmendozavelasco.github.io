@@ -1,3 +1,5 @@
+# Modified by https://github.com/LuisAngelMendozaVelasco
+
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your entire site, values
@@ -32,6 +34,7 @@ author:
   email            : "luisangel.mendozavelasco@outlook.com" # "none@example.org" 
 
   # Academic websites
+  academia         : # URL
   arxiv            : # URL - Update with the correct link to your profile
   googlescholar    : # "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   impactstory      : # URL
@@ -136,7 +139,8 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 :  # Open Graph/Twitter default site image
+og_image                 :  # Social media default site image
+og_description           :  # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -351,5 +355,3 @@ compress_html:
   clippings: all
   ignore:
     envs: development
-
-# Modified by Luis Mendoza

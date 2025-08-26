@@ -2,10 +2,12 @@
 layout: compress
 ---
 
+<!-- Modified by https://github.com/LuisAngelMendozaVelasco -->
+
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -30,5 +32,3 @@ layout: compress
 
   </body>
 </html>
-
-<!-- Modified by Luis Mendoza -->

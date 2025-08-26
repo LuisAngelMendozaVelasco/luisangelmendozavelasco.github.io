@@ -1,11 +1,13 @@
 ---
 permalink: /
-title: "About Me" # "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "About Me" # "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+
+<!-- Modified by https://github.com/LuisAngelMendozaVelasco -->
 
 Hi there, I'm Luis Mendoza! 👋🏼
 
@@ -16,5 +18,3 @@ Here you'll find my experiences learning and working in these Computer Science f
 You'll also find information about my academic background and how to contact me.
 
 ![programming_gif](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*VMmvImch6VU5pc2VktY1uw.gif)
-
-<!-- Modified by Luis Mendoza -->
