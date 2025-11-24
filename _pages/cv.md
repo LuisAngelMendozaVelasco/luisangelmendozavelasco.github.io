@@ -67,6 +67,9 @@ Amazon Web Services
 - **CPA - Programming Essentials in C++** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/CPA-Programming_Essentials_in_Cpp"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://drive.google.com/file/d/11xa3ecjyaJNoVRqXIZH4VJ2hRgkCoZxI/view?usp=share_link"></a><br>
 Cisco Networking Academy
 
+- **Data Analytics Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Data_Analytics_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/09AOKQ87LHII"></a><br>
+DeepLearning.AI
+
 - **Data Engineering Foundations Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Data_Engineering_Foundations_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/469C7SK85RBL"></a><br>
 IBM Skills Network
 
@@ -89,6 +92,9 @@ MathWorks
 Cornell University
 
 - **Generative Adversarial Networks Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_Adversarial_Networks_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/XUNUKBF78WM8"></a><br>
+DeepLearning.AI
+
+- **Generative AI for Software Development Skill Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_AI_for_Software_Development_Skill_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/2H8R45ZDA6KS"></a><br>
 DeepLearning.AI
 
 - **Getting Started with AWS Machine Learning** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/AWS_Courses/tree/main/Getting_Started_with_AWS_Machine_Learning"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/share/5496498bffa8961611b549b77ce6efda"></a><br>
@@ -151,6 +157,9 @@ MathWorks
 - **MATLAB for Data Processing and Visualization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/MATLAB_for_Data_Processing_and_Visualization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=721c9da1-e802-4607-aed0-100633963622"></a><br>
 MathWorks
 
+- **Natural Language Processing Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Natural_Language_Processing_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/RRWWRBRAONFT"></a><br>
+DeepLearning.AI
+
 - **Open Source Software Development, Linux and Git Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Open_Source_Software_Development_Linux_and_Git_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/WXM6K6VR6195"></a><br>
 The Linux Foundation
 
@@ -166,7 +175,10 @@ University of Toronto
 - **Signal Processing with MATLAB** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/Signal_Processing_with_MATLAB"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=7a75b3ce-4738-4095-a927-bdae9df4a8a4&"></a><br>
 MathWorks
 
-- **TensorFlow: Advanced Techniques** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Advanced_Techniques_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/EC41HMPTORIC"></a><br>
+- **Statistics with Python Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Statistics_with_Python_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/AIDJUBXKKSF1"></a><br>
+University of Michigan
+
+- **TensorFlow: Advanced Techniques Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Advanced_Techniques_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/EC41HMPTORIC"></a><br>
 DeepLearning.AI
 
 - **TensorFlow: Data and Deployment Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/TensorFlow-Data_and_Deployment_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/ZNVAS7T55889"></a><br>
