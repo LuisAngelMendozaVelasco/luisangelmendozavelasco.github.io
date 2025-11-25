@@ -7539,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Leverage pre-trained models to build image classifiers to detect concrete with and without cracks.</p>
+<p><strong>Objective</strong>: Use transfer learning to build an image classifier that detects concrete with and without cracks.</p>
 </div>
 </div>
 </div>
@@ -7550,7 +7550,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Pre-trained models such as <a href="https://arxiv.org/abs/1409.1556">VGG-16</a>, <a href="http://arxiv.org/abs/1512.00567">Inception</a>, and <a href="https://arxiv.org/abs/1512.03385">ResNet</a> can be utilized for image classification. These models are trained on large datasets like <a href="https://www.image-net.org/">ImageNet</a>, which contain over a million images and can classify images into 1000 object categories. By leveraging these pre-trained models, we can fine-tune them for specific tasks with smaller datasets, improving accuracy and reducing the need for extensive training data.</p>
+<p>Pre-trained models such as <a href="https://arxiv.org/abs/1409.1556">VGG-16</a>, <a href="http://arxiv.org/abs/1512.00567">Inception</a>, and <a href="https://arxiv.org/abs/1512.03385">ResNet</a> can be used for image classification. These models are trained on large datasets like <a href="https://www.image-net.org/">ImageNet</a>, which contains over a million images and can classify images into 1000 object categories. By leveraging these pre-trained models, we can fine-tune them for specific tasks with smaller datasets, improving accuracy and reducing the need for extensive training data.</p>
 </div>
 </div>
 </div>
@@ -7731,7 +7731,7 @@ Using 2500 files for validation.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The <code>negative</code> class represents the concrete images with no cracks and the <code>positive</code> class represents the concrete images with cracks.</p>
+<p>The <strong>negative</strong> class represents concrete images with no cracks and the <strong>positive</strong> class represents concrete images with cracks.</p>
 </div>
 </div>
 </div>
@@ -7824,7 +7824,7 @@ Using 2500 files for validation.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-an-image-classifier-using-the-ResNet50-architecture-as-a-base">Build an image classifier using the ResNet50 architecture as a base<a class="anchor-link" href="#Build-an-image-classifier-using-the-ResNet50-architecture-as-a-base">¶</a></h2>
+<h2 id="Build-a-CNN-using-the-ResNet50-architecture-as-a-base">Build a CNN using the ResNet50 architecture as a base<a class="anchor-link" href="#Build-a-CNN-using-the-ResNet50-architecture-as-a-base">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7924,7 +7924,7 @@ Using 2500 files for validation.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-ResNet50-model">Compile and train the ResNet50 model<a class="anchor-link" href="#Compile-and-train-the-ResNet50-model">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8064,7 +8064,7 @@ Epoch 5/5
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-ResNet50-model">Evaluate the ResNet50 model<a class="anchor-link" href="#Evaluate-the-ResNet50-model">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8171,7 +8171,7 @@ weighted avg     0.9972    0.9972    0.9972      2500
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-an-image-classifier-using-the-VGG16-architecture-as-a-base">Build an image classifier using the VGG16 architecture as a base<a class="anchor-link" href="#Build-an-image-classifier-using-the-VGG16-architecture-as-a-base">¶</a></h2>
+<h2 id="Build-a-CNN-using-the-VGG16-architecture-as-a-base">Build a CNN using the VGG16 architecture as a base<a class="anchor-link" href="#Build-a-CNN-using-the-VGG16-architecture-as-a-base">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8271,7 +8271,7 @@ weighted avg     0.9972    0.9972    0.9972      2500
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-VGG16-model">Compile and train the VGG16 model<a class="anchor-link" href="#Compile-and-train-the-VGG16-model">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8407,7 +8407,7 @@ Epoch 5/5
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-VGG16-model">Evaluate the VGG16 model<a class="anchor-link" href="#Evaluate-the-VGG16-model">¶</a></h2>
 </div>
 </div>
 </div>
