@@ -7539,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Create a simple autoencoder for feature extraction, dimensionality reduction and reconstruction of images.</p>
+<p><strong>Objective</strong>: Train a basic autoencoder for image reconstruction.</p>
 </div>
 </div>
 </div>
@@ -7550,8 +7550,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>An <a href="https://en.wikipedia.org/wiki/Autoencoder">autoencoder</a>, also known as autoassociator or Diabolo networks, is an artificial neural network employed to recreate the given input. It takes a set of unlabeled inputs, encodes them and then tries to extract the most valuable information from them. They are used for feature extraction, learning generative models of data, dimensionality reduction and can be used for compression. Autoencoders, based on Restricted Boltzmann Machines, are employed in some of the largest deep learning applications. They are the building blocks of <a href="https://en.wikipedia.org/wiki/Deep_belief_network">Deep Belief Networks (DBN)</a>.</p>
-<p>An autoencoder can be divided in two parts, the encoder and the decoder. The encoder compress the representation of an input by running the data through its layers. The decoder works like encoder network in reverse. It works to recreate the input as closely as possible. The training procedure produces at the center of the network a compressed, low dimensional representation that can be decoded to obtain the higher dimensional representation with minimal loss of information between the input and the output.</p>
+<p>An <a href="https://en.wikipedia.org/wiki/Autoencoder">autoencoder</a> is an artificial neural network employed to recreate the given input. It takes a set of unlabeled inputs, encodes them and then tries to extract the most valuable information from them. They are used for feature extraction, learning generative models of data, dimensionality reduction and compression. Autoencoders, based on <a href="https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine">Restricted Boltzmann Machine (RBM)</a>, are employed in some of the largest deep learning applications. They are the building blocks of <a href="https://en.wikipedia.org/wiki/Deep_belief_network">Deep Belief Networks (DBN)</a>.</p>
+<p>An autoencoder can be divided in two parts, the <strong>encoder</strong> and the <strong>decoder</strong>. The <strong>encoder</strong> compress the representation of an input by running the data through its layers. The <strong>decoder</strong> works like the <strong>encoder</strong> network in reverse. It works to recreate the input as closely as possible. The training procedure produces at the center of the network a compressed, low dimensional representation that can be decoded to obtain the higher dimensional representation with minimal loss of information between the input and the output.</p>
 </div>
 </div>
 </div>
@@ -7711,7 +7711,7 @@ X_test shape: (10000, 28, 28)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AutoEncoder</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
@@ -7731,7 +7731,7 @@ X_test shape: (10000, 28, 28)
         <span class="bp">self</span><span class="o">.</span><span class="n">decoding_2</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_hidden_1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">decoding_final</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_input</span><span class="p">)</span>
 
-    <span class="c1"># Building the encoder</span>
+    <span class="c1"># Build the encoder</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">encoder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten_layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">layer_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -7740,7 +7740,7 @@ X_test shape: (10000, 28, 28)
 
         <span class="k">return</span> <span class="n">code</span>
 
-    <span class="c1"># Building the decoder</span>
+    <span class="c1"># Build the decoder</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">decoder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="n">layer_1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoding_1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">layer_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoding_2</span><span class="p">(</span><span class="n">layer_1</span><span class="p">)</span>
@@ -7781,7 +7781,7 @@ X_test shape: (10000, 28, 28)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Train-the-model">Train the model<a class="anchor-link" href="#Train-the-model">¶</a></h2>
+<h2 id="Train-the-Autoencoder">Train the Autoencoder<a class="anchor-link" href="#Train-the-Autoencoder">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7790,14 +7790,14 @@ X_test shape: (10000, 28, 28)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span>
 <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_size</span><span class="p">)</span>
-<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">))]</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">AutoEncoder</span><span class="p">()</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">)</span>
@@ -7901,7 +7901,7 @@ Epoch 20/20:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-Autoencoder">Evaluate the Autoencoder<a class="anchor-link" href="#Evaluate-the-Autoencoder">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7912,7 +7912,7 @@ Epoch 20/20:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The reconstructions were successful. It can be seen that some noise were added to the images.</p>
+<p>It can be seen that some noise were added to the images.</p>
 </div>
 </div>
 </div>

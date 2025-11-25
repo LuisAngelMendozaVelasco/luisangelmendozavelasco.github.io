@@ -7539,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Implement pedestrian detection using a pretrained Faster R-CNN model.</p>
+<p><strong>Objective</strong>: Build a pedestrian detection system using a pretrained Faster R-CNN.</p>
 </div>
 </div>
 </div>
@@ -7550,7 +7550,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="https://arxiv.org/pdf/1506.01497">Faster R-CNN</a> is an advanced object detection model that improves upon its predecessor, <a href="https://arxiv.org/pdf/1504.08083">Fast R-CNN</a>, by incorporating a Region Proposal Network (RPN) which shares full-image convolutional features with the detection network, enabling nearly cost-free region proposals. This RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position, trained end-to-end to generate high-quality region proposals. The Faster R-CNN architecture consists of two main modules: a deep fully convolutional network that proposes regions and a Fast R-CNN detector that uses these proposed regions for detection. Despite its name, Faster R-CNN is known for being more accurate but slower than some other models like YOLOv3 or MobileNet during inference.</p>
+<p><a href="https://arxiv.org/pdf/1506.01497">Faster Region-based Convolutional Neural Networks (R-CNN)</a> is an advanced object detection model that improves upon its predecessor, <a href="https://arxiv.org/pdf/1504.08083">Fast R-CNN</a>, by incorporating a Region Proposal Network (RPN) which shares full-image convolutional features with the detection network, enabling nearly cost-free region proposals. This RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position, trained end-to-end to generate high-quality region proposals. The Faster R-CNN architecture consists of two main modules: a deep fully convolutional network that proposes regions and a Fast R-CNN detector that uses these proposed regions for detection. Despite its name, Faster R-CNN is known for being more accurate but slower than some other models like <a href="https://arxiv.org/pdf/1804.02767">YOLOv3</a> or <a href="https://en.wikipedia.org/wiki/MobileNet">MobileNet</a> during inference.</p>
 </div>
 </div>
 </div>
@@ -75469,14 +75469,13 @@ AAAATGF2ZjU4Ljc2LjEwMA==
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Run on the GPU or on the CPU, if a GPU is not available</span>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Using </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2"> device!</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># Load a model pretrained on COCO dataset</span>
 <span class="n">weights</span> <span class="o">=</span> <span class="n">FasterRCNN_ResNet50_FPN_Weights</span><span class="o">.</span><span class="n">DEFAULT</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">fasterrcnn_resnet50_fpn</span><span class="p">(</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
@@ -75735,7 +75734,7 @@ FasterRCNN(
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-Faster-R-CNN">Evaluate the Faster R-CNN<a class="anchor-link" href="#Evaluate-the-Faster-R-CNN">¶</a></h2>
 </div>
 </div>
 </div>

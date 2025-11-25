@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7516,7 +7517,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Jazz-Solo">Jazz Solo<a class="anchor-link" href="#Jazz-Solo">¶</a></h1>
+<h1 id="Music-Generator">Music Generator<a class="anchor-link" href="#Music-Generator">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7538,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Train a Long Short-Term Memory network to generate music.</p>
+<p><strong>Objective</strong>: Train a Long Short-Term Memory (LSTM) network to generate Jazz music.</p>
 </div>
 </div>
 </div>
@@ -7549,7 +7550,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Download-the-dataset-and-required-files">Download the dataset and required files<a class="anchor-link" href="#Download-the-dataset-and-required-files">¶</a></h2>
+<h2 id="Download-the-dataset-and-auxiliary-files">Download the dataset and auxiliary files<a class="anchor-link" href="#Download-the-dataset-and-auxiliary-files">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7608,17 +7609,17 @@ unzip<span class="w"> </span>-qn<span class="w"> </span>/tmp/jazz_generator.zip<
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># !pip install music21==6.7.1 mido pydub</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">'/tmp'</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">IPython</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">music21</span>
-<span class="kn">from</span> <span class="nn">jazz_generator.data_utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">IPython</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">music21</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jazz_generator.data_utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"whitegrid"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7687,7 +7688,7 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The preprocessing of the musical data is rendered in terms of <a href="https://en.wikipedia.org/wiki/Note_value">musical values</a>. In music theory, a "value" captures the information needed to play multiple notes at the same time.</p>
+<p>The preprocessing of the musical data is rendered in terms of <a href="https://en.wikipedia.org/wiki/Note_value">note values</a>. In music theory, a "value" captures the information needed to play multiple notes at the same time.</p>
 </div>
 </div>
 </div>
@@ -7748,10 +7749,10 @@ Number of chords: 19
 </li>
 </ul>
 </li>
-<li><p><strong>Y</strong>: A ($Ty$, $m$, 90) dimensional array</p>
+<li><p><strong>Y</strong>: A ($T_y$, $m$, 90) dimensional array.</p>
 <ul>
 <li>It is essentially the same as X, but shifted one step to the left (to the past).</li>
-<li>The data in Y is reordered, where $Ty$ = $Tx$. This format makes it more convenient to feed into the LSTM.</li>
+<li>The data in Y is reordered, where $T_y$ = $T_x$. This format makes it more convenient to feed into the LSTM.</li>
 <li>The model will use the previous values to predict the next value.<ul>
 <li>So the sequence model will try to predict $y^{&lt;t&gt;}$ given $x^{&lt;1&gt;}$, ..., $x^{&lt;t&gt;}$.</li>
 </ul>
@@ -7815,7 +7816,44 @@ Number of chords: 19
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-Long-Short-Term-Memory-network">Build a Long Short-Term Memory network<a class="anchor-link" href="#Build-a-Long-Short-Term-Memory-network">¶</a></h2>
+<h2 id="Define-a-custom-callback">Define a custom callback<a class="anchor-link" href="#Define-a-custom-callback">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Build-a-LSTM-network">Build a LSTM network<a class="anchor-link" href="#Build-a-LSTM-network">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7827,10 +7865,8 @@ Number of chords: 19
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Implement the model composed of $T_x$ LSTM cells, where each cell is responsible for learning the following note based on the previous note and context. Each cell has the following schema:</p>
-<ul>
-<li>[$X_{t}$, $a0_{t-1}$, $c0_{t-1}$] -&gt; RESHAPE() -&gt; LSTM() -&gt; DENSE()</li>
-</ul>
-<p>The model will call the LSTM layer $T_x$ times using a for-loop. It is important that all $T_x$ copies have the same weights, the steps should have shared weights that aren't re-initialized.</p>
+<p>[$X_{t}$, $a0_{t-1}$, $c0_{t-1}$] -&gt; RESHAPE() -&gt; LSTM() -&gt; DENSE()</p>
+<p>The model will call the LSTM layer $T_x$ times using a for-loop. It is important that all $T_x$ copies have the same weights, the steps must have shared weights that aren't re-initialized.</p>
 </div>
 </div>
 </div>
@@ -8191,44 +8227,7 @@ Number of chords: 19
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Create-a-custom-callback">Create a custom callback<a class="anchor-link" href="#Create-a-custom-callback">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-LSTM-network">Compile and train the LSTM network<a class="anchor-link" href="#Compile-and-train-the-LSTM-network">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8237,15 +8236,16 @@ Number of chords: 19
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">)</span>
 
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">150</span>
-<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">patience</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">patience</span><span class="p">)]</span>
 <span class="n">custom_verbose</span> <span class="o">=</span> <span class="n">CustomVerbose</span><span class="p">(</span><span class="n">epochs_to_show</span><span class="p">)</span>
-<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">a0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_a</span><span class="p">))</span>
 <span class="n">c0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_a</span><span class="p">))</span>
 <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">c0</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">custom_verbose</span><span class="p">,</span> <span class="n">early_stopping</span><span class="p">])</span>
@@ -8331,7 +8331,7 @@ Epoch 137: early stopping
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-LSTM-network">Evaluate the LSTM network<a class="anchor-link" href="#Evaluate-the-LSTM-network">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8344,7 +8344,7 @@ Epoch 137: early stopping
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
 <li>Implement a music inference model to sample a sequence of musical values.</li>
-<li>Use the trained "LSTM_cell" and "densor" variables from the previous model to generate a sequence of values.</li>
+<li>Use the trained "LSTM_cell" and "densor" variables from the main model to generate a sequence of musical values.</li>
 </ul>
 </div>
 </div>
@@ -8354,7 +8354,7 @@ Epoch 137: early stopping
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Length of the sequences in the corpus</span>
@@ -8372,8 +8372,8 @@ Epoch 137: early stopping
 <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># A KerasTensor cannot be used as input to a TensorFlow function. The function should be wrapped in a layer.</span>
-<span class="k">class</span> <span class="nc">MyLayer</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyLayer</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
         <span class="c1"># Select the next value according to "output" and set "x" to be the one-hot representation of the selected value</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">n_values</span><span class="p">)</span>
@@ -8384,15 +8384,11 @@ Epoch 137: early stopping
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ty</span><span class="p">):</span>
     <span class="c1"># Perform one step of LSTM_cell</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">LSTM_cell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
-    
     <span class="c1"># Apply Dense layer to the hidden state output of the LSTM_cell</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">densor</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
     <span class="c1"># Append the prediction "output" to "outputs"</span>
     <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-
     <span class="n">x</span> <span class="o">=</span> <span class="n">MyLayer</span><span class="p">()(</span><span class="n">output</span><span class="p">)</span>
-
     <span class="c1"># Use RepeatVector(1) to convert x into a tensor with shape=(None, 1, 90)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">RepeatVector</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
     
@@ -8410,9 +8406,9 @@ Epoch 137: early stopping
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The inference model generates a sequence of values, then these values are then post-processed into musical chords (meaning that multiple values or notes can be played at the same time).</p>
-<p>Most <a href="https://en.wikipedia.org/wiki/Computer_music">computational music algorithms</a> use some post-processing because it's difficult to generate music that sounds good without it. The post-processing does things like clean up the generated audio by making sure the same sound is not repeated too many times, or that two successive notes are not too far from each other in pitch, and so on.</p>
-<p>It could be argued that many of these post-processing steps are hacks, however much of the music generation literature has also focused on hand-crafting post-processors, and a lot of the output quality depends on the quality of the post-processing and not just the quality of the model. Anyway, this post-processing makes a huge difference, so it is also used in this implementation.</p>
+<p>The inference model generates a sequence of musical values, then these values are post-processed into musical chords (meaning that multiple values or notes can be played at the same time).</p>
+<p>Most <a href="https://en.wikipedia.org/wiki/Computer_music">computational music algorithms</a> use some post-processing because it's difficult to generate music that sounds good without it. The post-processing does things like clean up the generated audio by making sure the same sound is not repeated too many times, or that two successive notes are not too far from each other in <a href="https://en.wikipedia.org/wiki/Pitch_(music">pitch</a>), and so on.</p>
+<p>It could be argued that many of these post-processing steps are hacks, however much of the music generation literature has also focused on hand-crafting post-processors, and a lot of the output quality depends on the quality of the post-processing and not just the quality of the model. Anyway, this post-processing makes a big difference, which is why it is also used in this implementation.</p>
 </div>
 </div>
 </div>

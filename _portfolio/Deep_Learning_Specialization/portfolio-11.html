@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7516,7 +7517,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Neural-Machine-Translation">Neural Machine Translation<a class="anchor-link" href="#Neural-Machine-Translation">¶</a></h1>
+<h1 id="Date-Converter">Date Converter<a class="anchor-link" href="#Date-Converter">¶</a></h1>
 </div>
 </div>
 </div>
@@ -7538,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Build a Neural Machine Translation model to translate human-readable dates into machine-readable dates.</p>
+<p><strong>Objective</strong>: Train a Neural Machine Translation (NMT) model to convert human-readable dates into machine-readable dates.</p>
 </div>
 </div>
 </div>
@@ -7550,7 +7551,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a href="https://en.wikipedia.org/wiki/Neural_machine_translation">Neural Machine Translation (NMT)</a> is a deep learning approach to machine translation that uses artificial neural networks to predict the likelihood of a sequence of words in the target language, given a sequence of words in the source language.</p>
-<p>For our case, the network will input a date written in a variety of possible formats (e.g. "the 29th of August 1958", "03/30/1968", "24 JUNE 1987") and translate them into standardized, machine readable dates (e.g. "1958-08-29", "1968-03-30", "1987-06-24"). The model will be trained on a dataset of 10,000 human readable dates and their equivalent, standardized, machine readable dates and learn to output dates in the common machine-readable format YYYY-MM-DD.</p>
+<p>For our case, the model will input dates written in a variety of possible formats (e.g. "the 29th of August 1958", "03/30/1968", "24 JUNE 1987") and translate them into standardized, machine-readable dates (e.g. "1958-08-29", "1968-03-30", "1987-06-24"). The model will be trained on a dataset of 10,000 human-readable dates and will learn to generate dates in the common machine-readable format YYYY-MM-DD.</p>
 </div>
 </div>
 </div>
@@ -7574,16 +7575,16 @@ a.anchor-link {
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># !pip install faker babel</span>
-<span class="kn">from</span> <span class="nn">faker</span> <span class="kn">import</span> <span class="n">Faker</span>
-<span class="kn">from</span> <span class="nn">babel.dates</span> <span class="kn">import</span> <span class="n">format_date</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">optimizers</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">faker</span><span class="w"> </span><span class="kn">import</span> <span class="n">Faker</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">babel.dates</span><span class="w"> </span><span class="kn">import</span> <span class="n">format_date</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">activations</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">optimizers</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"whitegrid"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7624,13 +7625,13 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_date</span><span class="p">():</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">load_date</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">        Loads some fake dates.</span>
-<span class="sd">        Returns a tuple containing human readable string, machine readable string, and date object.</span>
+<span class="sd">    Loads some fake dates.</span>
+<span class="sd">    Returns a tuple containing human readable string, machine readable string, and date object.</span>
 <span class="sd">    """</span>
 
     <span class="n">fake</span> <span class="o">=</span> <span class="n">Faker</span><span class="p">()</span>
@@ -7651,10 +7652,8 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 
     <span class="k">return</span> <span class="n">human_readable</span><span class="p">,</span> <span class="n">machine_readable</span><span class="p">,</span> <span class="n">dt</span>
 
-<span class="k">def</span> <span class="nf">load_dataset</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">        Loads a dataset with "n" examples and vocabularies, where "n" is the number of examples to generate.</span>
-<span class="sd">    """</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_dataset</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Loads a dataset with "n" examples and vocabularies, where "n" is the number of examples to generate."""</span>
     
     <span class="n">human_vocab</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
     <span class="n">machine_vocab</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
@@ -7729,10 +7728,10 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li><code>dataset</code>: A list of tuples of (human readable date, machine readable date).</li>
-<li><code>human_vocab</code>: A python dictionary mapping all characters used in the human readable dates to an integer-valued index.</li>
-<li><code>machine_vocab</code>: A python dictionary mapping all characters used in machine readable dates to an integer-valued index.</li>
-<li><code>inv_machine_vocab</code>: The inverse dictionary of machine_vocab, mapping from indices back to characters.</li>
+<li><strong>dataset</strong>: A list of tuples of (human-readable date, machine-readable date).</li>
+<li><strong>human_vocab</strong>: A python dictionary mapping all characters used in human-readable dates to an integer-valued index.</li>
+<li><strong>machine_vocab</strong>: A python dictionary mapping all characters used in machine-readable dates to an integer-valued index.</li>
+<li><strong>inv_machine_vocab</strong>: The inverse dictionary of machine_vocab, mapping from indices back to characters.</li>
 </ul>
 </div>
 </div>
@@ -7756,7 +7755,7 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">string_to_int</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">string_to_int</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">vocab</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Converts all strings in the vocabulary into a list of integers representing the positions of the</span>
 <span class="sd">    input string's characters in the "vocab".</span>
@@ -7784,7 +7783,7 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
     
     <span class="k">return</span> <span class="n">rep</span>
 
-<span class="k">def</span> <span class="nf">preprocess_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">human_vocab</span><span class="p">,</span> <span class="n">machine_vocab</span><span class="p">,</span> <span class="n">Tx</span><span class="p">,</span> <span class="n">Ty</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">preprocess_data</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">human_vocab</span><span class="p">,</span> <span class="n">machine_vocab</span><span class="p">,</span> <span class="n">Tx</span><span class="p">,</span> <span class="n">Ty</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">dataset</span><span class="p">)</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">string_to_int</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Tx</span><span class="p">,</span> <span class="n">human_vocab</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">X</span><span class="p">])</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="n">string_to_int</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Ty</span><span class="p">,</span> <span class="n">machine_vocab</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">Y</span><span class="p">]</span>
@@ -7806,26 +7805,26 @@ To enable the following instructions: AVX2 FMA, in other operations, rebuild Ten
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <ul>
-<li><code>X</code>: A processed version of the human readable dates in the training set.<ul>
-<li>Each character in <code>X</code> is replaced by an index (integer) mapped to the character using <code>human_vocab</code>.</li>
+<li><strong>X</strong>: A processed version of the human-readable dates in the training set.<ul>
+<li>Each character in <strong>X</strong> is replaced by an index (integer) mapped to the character using <strong>human_vocab</strong>.</li>
 <li>Each date is padded to ensure a length of $T_x$ using a special character (&lt; pad &gt;).</li>
-<li>X.shape = (m, Tx) where m is the number of training examples in a batch.</li>
+<li><strong>X</strong>.shape = (m, $T_x$) where m is the number of training examples in a batch.</li>
 </ul>
 </li>
-<li><code>Y</code>: A processed version of the machine readable dates in the training set.<ul>
-<li>Each character is replaced by the index (integer) it is mapped to in <code>machine_vocab</code>.</li>
-<li>Y.shape = (m, Ty).</li>
+<li><strong>Y</strong>: A processed version of the machine-readable dates in the training set.<ul>
+<li>Each character in <strong>Y</strong> is replaced by an index (integer) mapped to the character using <strong>machine_vocab</strong>.</li>
+<li><strong>Y</strong>.shape = (m, $T_y$).</li>
 </ul>
 </li>
-<li><code>Xoh</code>: One-hot version of <code>X</code>.<ul>
-<li>Each index in <code>X</code> is converted to the one-hot representation (if the index is 2, the one-hot version has the index position 2 set to 1, and the remaining positions are 0).</li>
-<li>Xoh.shape = (m, Tx, len(human_vocab)).</li>
+<li><strong>Xoh</strong>: One-hot version of <strong>X</strong>.<ul>
+<li>Each index in <strong>X</strong> is converted to the one-hot representation (if the index is 2, the one-hot version has the index position 2 set to 1, and the remaining positions are 0).</li>
+<li><strong>Xoh</strong>.shape = (m, $T_x$, len(<strong>human_vocab</strong>)).</li>
 </ul>
 </li>
-<li><code>Yoh</code>: One-hot version of <code>Y</code>.<ul>
-<li>Each index in <code>Y</code> is converted to the one-hot representation.</li>
-<li>Yoh.shape = (m, Ty, len(machine_vocab)).</li>
-<li>len(machine_vocab) = 11 since there are 10 numeric digits (0 to 9) and the <code>-</code> symbol.</li>
+<li><strong>Yoh</strong>: One-hot version of <strong>Y</strong>.<ul>
+<li>Each index in <strong>Y</strong> is converted to the one-hot representation.</li>
+<li><strong>Yoh</strong>.shape = (m, $T_y$, len(<strong>machine_vocab</strong>)).</li>
+<li>len(<strong>machine_vocab</strong>) = 11 since there are 10 numeric digits (0 to 9) and the <strong>-</strong> symbol.</li>
 </ul>
 </li>
 </ul>
@@ -7960,7 +7959,33 @@ Target after preprocessing (one-hot):
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-Neural-Machine-Translation-network-with-attention">Build a Neural Machine Translation network with attention<a class="anchor-link" href="#Build-a-Neural-Machine-Translation-network-with-attention">¶</a></h2>
+<h2 id="Define-a-custom-callback">Define a custom callback<a class="anchor-link" href="#Define-a-custom-callback">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -7971,7 +7996,18 @@ Target after preprocessing (one-hot):
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The <a href="https://arxiv.org/pdf/1508.04025v5">attention mechanism</a> tells a NMT model where it should pay attention to at any step.</p>
+<h2 id="Build-a-NMT-model-with-attention">Build a NMT model with attention<a class="anchor-link" href="#Build-a-NMT-model-with-attention">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The <a href="https://arxiv.org/pdf/1508.04025v5">attention mechanism</a> tells a NMT model where it should pay attention at each step.</p>
 </div>
 </div>
 </div>
@@ -7980,10 +8016,10 @@ Target after preprocessing (one-hot):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Custom softmax activation function.</span>
 <span class="sd">    # Arguments</span>
 <span class="sd">        x: Tensor.</span>
@@ -8001,6 +8037,7 @@ Target after preprocessing (one-hot):
     <span class="k">elif</span> <span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
         <span class="n">e</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        
         <span class="k">return</span> <span class="n">e</span> <span class="o">/</span> <span class="n">s</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'Cannot apply softmax to a tensor that is 1D!'</span><span class="p">)</span>
@@ -8047,7 +8084,7 @@ Target after preprocessing (one-hot):
 <div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">one_step_attention</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s_prev</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">one_step_attention</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s_prev</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Performs one step of attention: Outputs a context vector computed as a dot product of the attention weights</span>
 <span class="sd">    "alphas" and the hidden states "a" of the Bi-LSTM.</span>
@@ -8084,7 +8121,7 @@ Target after preprocessing (one-hot):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">n_a</span> <span class="o">=</span> <span class="mi">32</span> <span class="c1"># Number of units for the pre-attention, bi-directional LSTM's hidden state "a"</span>
@@ -8097,8 +8134,7 @@ Target after preprocessing (one-hot):
 <span class="c1"># Define the inputs of the model with a shape (Tx,)</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">Tx</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">human_vocab</span><span class="p">)))</span>
 
-<span class="c1"># Define s0 (initial hidden state) and c0 (initial cell state)</span>
-<span class="c1"># for the decoder LSTM with shape (n_s,)</span>
+<span class="c1"># Define s0 (initial hidden state) and c0 (initial cell state) for the decoder LSTM with shape (n_s,)</span>
 <span class="n">s0</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_s</span><span class="p">,))</span>
 <span class="n">c0</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n_s</span><span class="p">,))</span>
 <span class="n">s</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">s0</span><span class="p">,</span> <span class="n">c0</span>
@@ -8113,13 +8149,10 @@ Target after preprocessing (one-hot):
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ty</span><span class="p">):</span>
     <span class="c1"># Perform one step of the attention mechanism to get back the context vector at step t</span>
     <span class="n">context</span> <span class="o">=</span> <span class="n">one_step_attention</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-    
     <span class="c1"># Apply the post-attention LSTM cell to the "context" vector</span>
     <span class="n">s</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">post_activation_LSTM_cell</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">initial_state</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
-    
     <span class="c1"># Apply Dense layer to the hidden state output of the post-attention LSTM</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">output_layer</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    
     <span class="c1"># Append "output" to the "outputs" list</span>
     <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
@@ -8329,44 +8362,7 @@ Target after preprocessing (one-hot):
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Create-a-custom-callback">Create a custom callback<a class="anchor-link" href="#Create-a-custom-callback">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-NMT-model">Compile and train the NMT model<a class="anchor-link" href="#Compile-and-train-the-NMT-model">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8375,15 +8371,16 @@ Target after preprocessing (one-hot):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">)</span>
 
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">patience</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">patience</span><span class="p">)]</span>
 <span class="n">custom_verbose</span> <span class="o">=</span> <span class="n">CustomVerbose</span><span class="p">(</span><span class="n">epochs_to_show</span><span class="p">)</span>
-<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Initialize s0 and c0</span>
 <span class="n">s0_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Xoh_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">n_s</span><span class="p">))</span>
@@ -8471,7 +8468,7 @@ Epoch 51: early stopping
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-NMT-model">Evaluate the NMT model<a class="anchor-link" href="#Evaluate-the-NMT-model">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8521,7 +8518,7 @@ Epoch 51: early stopping
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Show some mislabelled examples:</p>
+<p>Show some mislabeled dates:</p>
 </div>
 </div>
 </div>

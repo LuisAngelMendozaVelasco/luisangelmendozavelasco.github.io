@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7538,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Implement an algorithm for trigger word detection.</p>
+<p><strong>Objective</strong>: Train a Recurrent Neural Network (RNN) to detect a trigger word in audio sequences.</p>
 </div>
 </div>
 </div>
@@ -7549,7 +7550,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="https://www.ijert.org/research/trigger-word-recognition-using-lstm-IJERTV9IS060092.pdf">Trigger word detection</a> is the technology that allows devices like Amazon Alexa, Google Home, and Apple Siri to wake up upon hearing a certain word. For this model, the trigger word will be "activate", every time it hears this specific word, it will make a "chiming" sound.</p>
+<p><a href="https://www.ijert.org/research/trigger-word-recognition-using-lstm-IJERTV9IS060092.pdf">Trigger word detection</a> is the technology that allows devices like Amazon Alexa, Google Home, and Apple Siri to activate when they hear a specific word. For this model, the trigger word will be "activate", every time it hears this specific word, it will make a buzzer sound.</p>
+<p>A <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Network (RNN)</a> utilizes recurrent connections, where the output of a neuron at one time step is fed back as input to the network at the next time step. This enables RNNs to capture temporal dependencies and patterns within sequences. The fundamental building block of RNNs is the recurrent unit, which maintains a hidden state, a form of memory that is updated at each time step based on the current input and the previous hidden state. This feedback mechanism allows the network to learn from past inputs and incorporate that knowledge into its current processing.</p>
 </div>
 </div>
 </div>
@@ -7572,13 +7574,13 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">wavfile</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">Model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">wavfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydub</span><span class="w"> </span><span class="kn">import</span> <span class="n">AudioSegment</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">layers</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">Model</span>
 </pre></div>
 </div>
 </div>
@@ -7656,17 +7658,6 @@ unzip<span class="w"> </span>-qn<span class="w"> </span>/tmp/word_detection.zip<
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Load-the-dataset">Load the dataset<a class="anchor-link" href="#Load-the-dataset">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Create recordings with a mix of positive words ("activate") and negative words (random words other than activate) on different background sounds.</p>
 </div>
 </div>
 </div>
@@ -7764,7 +7755,7 @@ unzip<span class="w"> </span>-qn<span class="w"> </span>/tmp/word_detection.zip<
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The audio was sampled at 44,100 Hz, therefore a 10 second audio clip is represented by 441,000 numbers. In  order to help the sequence model more easily learn to detect trigger words, a <a href="https://en.wikipedia.org/wiki/Spectrogram">spectrogram</a> of the audio is computed. The spectrogram tells us how many different frequencies are present in an audio clip at any given time.</p>
+<p>The audio was sampled at 44.1 kHz, therefore a 10 second audio clip is represented by 441,000 numbers. In order to help the sequence model learn more easily to detect trigger words, a <a href="https://en.wikipedia.org/wiki/Spectrogram">spectrogram</a> of the audio is computed. The spectrogram tells us how many different frequencies are present in an audio clip at any given time.</p>
 </div>
 </div>
 </div>
@@ -7776,7 +7767,7 @@ unzip<span class="w"> </span>-qn<span class="w"> </span>/tmp/word_detection.zip<
 <div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">graph_spectrogram</span><span class="p">(</span><span class="n">wav_file</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">graph_spectrogram</span><span class="p">(</span><span class="n">wav_file</span><span class="p">):</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">wavfile</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">wav_file</span><span class="p">)</span>
     <span class="n">nfft</span> <span class="o">=</span> <span class="mi">200</span> <span class="c1"># Length of each window segment</span>
     <span class="n">fs</span> <span class="o">=</span> <span class="mi">8000</span> <span class="c1"># Sampling frequencies</span>
@@ -7840,7 +7831,7 @@ unzip<span class="w"> </span>-qn<span class="w"> </span>/tmp/word_detection.zip<
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The color of the spectrogram shows the degree to which different frequencies are present in the audio at different points in time. Yellow means that a certain frequency is more active or more present in the audio clip, purple indicates less active frequencies.</p>
+<p>The color of the spectrogram shows the degree to which different frequencies are present in the audio at different points in time. Yellow means that a certain frequency is more present in the audio clip, blue indicates less active frequencies.</p>
 <p>The size of the output spectrogram depends on the hyperparameters of the spectrogram software and the length of the input. We will work with 10 second audio clips as the "standard length" for the training examples. The spectrogram will be the input to the network, the number of time steps of the spectrogram will be 5511, so $T_x$ = 5511.</p>
 </div>
 </div>
@@ -7881,7 +7872,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The output of the model will divide 10 seconds into 1,375 units. For each of the 1375 time steps, the model predicts whether someone recently finished saying the trigger word "activate", so $T_y$ = 1375. These values were chosen within the standard range used for speech systems.</p>
+<p>The output of the model will divide 10 seconds into 1375 units. For each time step, the model predicts whether someone recently finished saying the trigger word "activate", so $T_y$ = 1375. These values were chosen within the standard range used for speech systems.</p>
 </div>
 </div>
 </div>
@@ -7908,7 +7899,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Audio segments are loaded using <a href="https://github.com/jiaaro/pydub">pydub</a>. Pydub uses 1 ms as the discretization interval, this is why a 10 second clip is always represented using 10,000 steps.</p>
+<p>Audio segments are loaded using <a href="https://github.com/jiaaro/pydub">pydub</a>, which uses 1 ms as the discretization interval, which is why a 10 second audio clip is always represented using 10,000 steps.</p>
 </div>
 </div>
 </div>
@@ -7961,13 +7952,14 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Process for synthesizing an audio clip:</p>
+<p>Create recordings with a mix of positive words ("activate") and negative words (random words other than "activate") on different background sounds.</p>
+<p>Process to synthesize an audio clip:</p>
 <ul>
-<li>Pick a random 10 seconds background audio clip.</li>
+<li>Pick a random 10 second background audio clip.</li>
 <li>Randomly insert 0-4 audio clips of "activate" into this clip.</li>
 <li>Randomly insert 0-2 audio clips of negative words into this clip.</li>
 </ul>
-<p>Since we have synthesized the word "activate" into the background clip, we know exactly when in the 10-second clip "activate" appears. This makes it easier to generate the labels $y^{\langle t \rangle}$.</p>
+<p>Since we have synthesized the word "activate" into the background clip, we know exactly when in the 10 second clip the word "activate" appears. This makes it easier to generate the labels $y^{\langle t \rangle}$.</p>
 </div>
 </div>
 </div>
@@ -7979,7 +7971,7 @@ Time steps in input after spectrogram: (101, 5511)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_random_time_segment</span><span class="p">(</span><span class="n">segment_ms</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_random_time_segment</span><span class="p">(</span><span class="n">segment_ms</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Gets a random time segment of duration segment_ms in a 10,000 ms audio clip.</span>
 <span class="sd">    </span>
@@ -7995,7 +7987,7 @@ Time steps in input after spectrogram: (101, 5511)
     
     <span class="k">return</span> <span class="n">segment_start</span><span class="p">,</span> <span class="n">segment_end</span>
 
-<span class="k">def</span> <span class="nf">is_overlapping</span><span class="p">(</span><span class="n">segment_time</span><span class="p">,</span> <span class="n">previous_segments</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_overlapping</span><span class="p">(</span><span class="n">segment_time</span><span class="p">,</span> <span class="n">previous_segments</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Checks if the time of a segment overlaps with the times of existing segments.</span>
 <span class="sd">    </span>
@@ -8021,7 +8013,7 @@ Time steps in input after spectrogram: (101, 5511)
 
     <span class="k">return</span> <span class="n">overlap</span>
 
-<span class="k">def</span> <span class="nf">insert_audio_clip</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">audio_clip</span><span class="p">,</span> <span class="n">previous_segments</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_audio_clip</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">audio_clip</span><span class="p">,</span> <span class="n">previous_segments</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Insert a new audio segment over the background noise at a random time step, ensuring that the </span>
 <span class="sd">    audio segment does not overlap with existing segments.</span>
@@ -8062,7 +8054,7 @@ Time steps in input after spectrogram: (101, 5511)
     
     <span class="k">return</span> <span class="n">new_background</span><span class="p">,</span> <span class="n">segment_time</span>
 
-<span class="k">def</span> <span class="nf">insert_ones</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">segment_end_ms</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insert_ones</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">segment_end_ms</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Update the label vector y. The labels of the 50 output steps strictly after the end of the segment </span>
 <span class="sd">    should be set to 1. By strictly we mean that the label of segment_end_y should be 0 while, the</span>
@@ -8089,7 +8081,7 @@ Time steps in input after spectrogram: (101, 5511)
     
     <span class="k">return</span> <span class="n">y</span>
 
-<span class="k">def</span> <span class="nf">create_training_example</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">activates</span><span class="p">,</span> <span class="n">negatives</span><span class="p">,</span> <span class="n">Ty</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_training_example</span><span class="p">(</span><span class="n">background</span><span class="p">,</span> <span class="n">activates</span><span class="p">,</span> <span class="n">negatives</span><span class="p">,</span> <span class="n">Ty</span><span class="p">,</span> <span class="n">output_file</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Creates a training example with a given background, activates, and negatives.</span>
 <span class="sd">    </span>
@@ -8205,7 +8197,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Generate a smaller training set of 32 examples:</p>
+<p>Create a smaller training set of 32 examples:</p>
 </div>
 </div>
 </div>
@@ -8243,7 +8235,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-Recurrent-Neural-Network">Build a Recurrent Neural Network<a class="anchor-link" href="#Build-a-Recurrent-Neural-Network">¶</a></h2>
+<h2 id="Build-a-RNN">Build a RNN<a class="anchor-link" href="#Build-a-RNN">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8252,7 +8244,7 @@ Time steps in input after spectrogram: (101, 5511)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">Tx</span><span class="p">,</span> <span class="n">n_freq</span><span class="p">))</span>
@@ -8286,7 +8278,7 @@ Time steps in input after spectrogram: (101, 5511)
 <span class="n">x</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>                                  
 
 <span class="c1"># Time-distributed dense layer</span>
-<span class="c1"># TimeDistributed  with sigmoid activation </span>
+<span class="c1"># TimeDistributed with sigmoid activation </span>
 <span class="n">outputs</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">TimeDistributed</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">"sigmoid"</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span> 
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
@@ -8383,7 +8375,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-RNN">Compile and train the RNN<a class="anchor-link" href="#Compile-and-train-the-RNN">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8420,7 +8412,7 @@ Time steps in input after spectrogram: (101, 5511)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-RNN">Evaluate the RNN<a class="anchor-link" href="#Evaluate-the-RNN">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8432,7 +8424,7 @@ Time steps in input after spectrogram: (101, 5511)
 <div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">detect_triggerword</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">detect_triggerword</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Runs audio (saved in a wav file) through the network"""</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -8461,7 +8453,7 @@ Time steps in input after spectrogram: (101, 5511)
     
     <span class="k">return</span> <span class="n">predictions</span>
 
-<span class="k">def</span> <span class="nf">chime_on_activate</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">chime_on_activate</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Triggers a "chiming" sound to play when the probability is above a certain threshold.</span>
 <span class="sd">    """</span>
