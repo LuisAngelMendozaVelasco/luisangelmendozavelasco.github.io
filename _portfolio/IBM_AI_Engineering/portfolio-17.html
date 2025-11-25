@@ -7539,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Reconstruct an image using a Restricted Boltzmann Machine.</p>
+<p><strong>Objetive</strong>: Train a Restricted Boltzmann Machine (RBM) for image reconstruction.</p>
 </div>
 </div>
 </div>
@@ -7550,9 +7550,9 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a href="https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine">Restricted Boltzmann Machine (RBM)</a> is a shallow neural network that learn to reconstruct data by themselves in an unsupervised fashion. An RBM is a basic form of autoencoder. It can automatically extract meaningful features from a given input.</p>
-<p>RBM is a 2 layer neural network. Simply, RBM takes the inputs and translates those into a set of binary values that represents them in the hidden layer. Then, these numbers can be translated back to reconstruct the inputs. Through several forward and backward passes, the RBM will be trained, and a trained RBM can reveal which features are the most important ones when detecting patterns.</p>
-<p>RBM is useful for collaborative filtering, dimensionality reduction, classification, regression, feature learning, topic modeling and even deep belief networks.</p>
+<p><a href="https://en.wikipedia.org/wiki/Restricted_Boltzmann_machine">Restricted Boltzmann Machine (RBM)</a> is a shallow neural network that learn to reconstruct data by themselves in an unsupervised fashion. An RBM is a basic form of <a href="https://en.wikipedia.org/wiki/Autoencoder">autoencoder</a>. It can automatically extract meaningful features from a given input.</p>
+<p>RBM is a 2 layer neural network. Simply, RBM takes the inputs and translates those into a set of binary values that represents them in the hidden layer. Then, these numbers can be translated back to reconstruct the inputs. Through several forward and backward passes, the RBM will be trained, and it can reveal which features are the most important ones when detecting patterns.</p>
+<p>RBM is useful for collaborative filtering, dimensionality reduction, classification, regression, feature learning, topic modeling and even <a href="https://en.wikipedia.org/wiki/Deep_belief_network">Deep Belief Networks (DBNs)</a>.</p>
 </div>
 </div>
 </div>
@@ -7624,7 +7624,7 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We will be using the MNIST dataset to implement the usage of RBMs.</p>
+<p>We will use the <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST database</a> to implement the usage of RBMs.</p>
 </div>
 </div>
 </div>
@@ -7712,7 +7712,7 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-restricted-Boltzmann-machine">Build a restricted Boltzmann machine<a class="anchor-link" href="#Build-a-restricted-Boltzmann-machine">¶</a></h2>
+<h2 id="Build-a-RBM">Build a RBM<a class="anchor-link" href="#Build-a-RBM">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7723,7 +7723,11 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>An RBM has two layers. The first layer of the RBM is called the visible (or input layer). The second layer is the hidden layer, which has neurons in our case. Each hidden node takes on values of either 0 or 1, with a probability that is a logistic function of the inputs it receives from the other visible units.</p>
+<p>A RBM has two layers:</p>
+<ul>
+<li>The first layer is called the visible or input layer.</li>
+<li>The second layer is the hidden layer.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -7732,15 +7736,15 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">hiddenUnits</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">visibleUnits</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
 
 <span class="c1"># Define the bias of the visible and hidden layers</span>
-<span class="n">vb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">visibleUnits</span><span class="p">]),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># Size: Number of pixels</span>
-<span class="n">hb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">hiddenUnits</span><span class="p">]),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># Size: Number of features we're going to learn</span>
+<span class="n">vb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">visibleUnits</span><span class="p">]),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># Size: number of pixels</span>
+<span class="n">hb</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">hiddenUnits</span><span class="p">]),</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="c1"># Size: number of features we're going to learn</span>
 
 <span class="c1"># Define weights among the input layer and hidden layer nodes. In the weight matrix, the number of rows are equal to the input nodes, </span>
 <span class="c1"># and the number of columns are equal to the output nodes. </span>
@@ -7766,16 +7770,15 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Phase 1: Input Processing</span>
-<span class="c1"># Defining a function to return only the generated hidden states </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define a function to return only the generated hidden states </span>
 <span class="k">def</span><span class="w"> </span><span class="nf">hidden_layer</span><span class="p">(</span><span class="n">v0_state</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">hb</span><span class="p">):</span>
     <span class="n">h0_prob</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">([</span><span class="n">v0_state</span><span class="p">],</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">hb</span><span class="p">)</span> <span class="c1"># Probabilities of the hidden units</span>
     <span class="n">h0_state</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">h0_prob</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">h0_prob</span><span class="p">))))</span> <span class="c1"># sample_h_given_X</span>
@@ -7784,21 +7787,7 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 
 <span class="c1"># Define hidden layer</span>
 <span class="n">h0</span> <span class="o">=</span> <span class="n">hidden_layer</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">hb</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Hidden state shape:"</span><span class="p">,</span> <span class="n">h0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Hidden state shape: (1, 50)
-</pre>
 </div>
 </div>
 </div>
@@ -7808,7 +7797,7 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reconstructed_output</span><span class="p">(</span><span class="n">h0_state</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">vb</span><span class="p">):</span>
@@ -7819,6 +7808,7 @@ To enable the following instructions: SSE4.1 SSE4.2 AVX AVX2 FMA, in other opera
 
 <span class="c1"># Define reconstruction part</span>
 <span class="n">v1</span> <span class="o">=</span> <span class="n">reconstructed_output</span><span class="p">(</span><span class="n">h0</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">vb</span><span class="p">)</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="s2">"v0 state shape:"</span><span class="p">,</span> <span class="n">v0</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"v1 state shape:"</span><span class="p">,</span> <span class="n">v1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -7873,7 +7863,7 @@ v1 state shape: (784,)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Train-the-model">Train the model<a class="anchor-link" href="#Train-the-model">¶</a></h2>
+<h2 id="Train-the-RBM">Train the RBM<a class="anchor-link" href="#Train-the-RBM">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7882,7 +7872,7 @@ v1 state shape: (784,)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define parameters</span>
@@ -7893,14 +7883,14 @@ v1 state shape: (784,)
 <span class="n">K</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># A good performance can be achieved with K = 1, so that we just take one set of sampling steps per image</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># Learning rate</span>
 
-<span class="c1"># Creating datasets</span>
+<span class="c1"># Create datasets</span>
 <span class="n">train_ds</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">batchsize</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">epochs</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
     <span class="n">batch_number</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">number_of_batches</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">/</span> <span class="n">batchsize</span><span class="p">)</span>
-    <span class="n">batches_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">number_of_batches</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">number_of_batches</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">number_of_batches</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+    <span class="n">batches_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">number_of_batches</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">number_of_batches</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">number_of_batches</span> <span class="o">/</span> <span class="mi">10</span><span class="p">))]</span>
 
     <span class="k">for</span> <span class="n">batch_x</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">train_ds</span><span class="p">:</span>
         <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -8016,7 +8006,7 @@ v1 state shape: (784,)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluate-the-model">Evaluate the model<a class="anchor-link" href="#Evaluate-the-model">¶</a></h2>
+<h2 id="Evaluate-the-RBM">Evaluate the RBM<a class="anchor-link" href="#Evaluate-the-RBM">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8166,7 +8156,7 @@ v1 state shape: (784,)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We have a destructed image of figure 3. Let's see if our trained network can fix it.</p>
+<p>We have a destructed image of the number <strong>3</strong>. Let's see if our trained network can fix it.</p>
 </div>
 </div>
 </div>

@@ -7312,6 +7312,7 @@ a.anchor-link {
                     processEnvironments: true
                 },
                 displayAlign: 'center',
+                messageStyle: 'none',
                 CommonHTML: {
                     linebreaks: {
                     automatic: true
@@ -7538,7 +7539,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Objective</strong>: Train a Convolutional Neural Network and a Residual Neural Network to classify a collection of six finger signs representing numbers from 0 to 5.</p>
+<p><strong>Objective</strong>: Train a Convolutional Neural Network (CNN) and a Residual Neural Network (ResNet) to classify a collection of six finger signs representing numbers from 0 to 5.</p>
 </div>
 </div>
 </div>
@@ -7572,15 +7573,15 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">h5py</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
-<span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">applications</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">h5py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">layers</span><span class="p">,</span> <span class="n">applications</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">optimizers</span><span class="p">,</span> <span class="n">callbacks</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"whitegrid"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7666,7 +7667,7 @@ File '/tmp/train_signs.h5.gz' already there; not retrieving.
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">'/tmp/train_signs.h5'</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span>
@@ -7679,7 +7680,7 @@ File '/tmp/train_signs.h5.gz' already there; not retrieving.
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">dataset_test</span><span class="p">[</span><span class="s2">"test_set_y"</span><span class="p">][:]</span>
 
 <span class="n">ds_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X_train</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-<span class="n">ds_validation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X_test</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">ds_validation</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">X_validation</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">one_hot</span><span class="p">(</span><span class="n">y_validation</span><span class="p">,</span> <span class="mi">6</span><span class="p">)))</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="n">dataset_test</span><span class="p">[</span><span class="s2">"list_classes"</span><span class="p">][:]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -7831,7 +7832,44 @@ Each image has a shape of (64, 64, 3)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-Convolutional-Neural-Network">Build a Convolutional Neural Network<a class="anchor-link" href="#Build-a-Convolutional-Neural-Network">¶</a></h2>
+<h2 id="Define-a-custom-callback">Define a custom callback<a class="anchor-link" href="#Define-a-custom-callback">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - accuracy: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'categorical_accuracy'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_accuracy: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_categorical_accuracy'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Build-a-CNN">Build a CNN<a class="anchor-link" href="#Build-a-CNN">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7949,44 +7987,7 @@ Each image has a shape of (64, 64, 3)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Create-a-custom-callback">Create a custom callback<a class="anchor-link" href="#Create-a-custom-callback">¶</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">CustomVerbose</span><span class="p">(</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epochs_to_show</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span> <span class="o">=</span> <span class="n">epochs_to_show</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_begin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs_to_show</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\t</span><span class="s2">elapsed time: </span><span class="si">{</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_stop_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">epoch_start_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s - accuracy: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'categorical_accuracy'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_accuracy: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_categorical_accuracy'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> - val_loss: </span><span class="si">{</span><span class="n">logs</span><span class="p">[</span><span class="s1">'val_loss'</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-CNN">Compile and train the CNN<a class="anchor-link" href="#Compile-and-train-the-CNN">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7995,15 +7996,16 @@ Each image has a shape of (64, 64, 3)
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model_CNN</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s2">"adam"</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'categorical_accuracy'</span><span class="p">])</span>
 
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">patience</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">patience</span><span class="p">)]</span>
 <span class="n">custom_verbose</span> <span class="o">=</span> <span class="n">CustomVerbose</span><span class="p">(</span><span class="n">epochs_to_show</span><span class="p">)</span>
-<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">history_CNN</span> <span class="o">=</span> <span class="n">model_CNN</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">ds_validation</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">custom_verbose</span><span class="p">,</span> <span class="n">early_stopping</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -8134,15 +8136,10 @@ Epoch 215: early stopping
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">:</span>
-    <span class="n">prediction_proba</span> <span class="o">=</span> <span class="n">model_CNN</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">y_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">prediction_proba</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()))</span>
-
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model_CNN</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -8191,7 +8188,7 @@ weighted avg     0.9921    0.9917    0.9917       120
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Build-a-Residual-Neural-Network-using-the-ResNET50V2-architecture-as-a-base">Build a Residual Neural Network using the ResNET50V2 architecture as a base<a class="anchor-link" href="#Build-a-Residual-Neural-Network-using-the-ResNET50V2-architecture-as-a-base">¶</a></h2>
+<h2 id="Build-a-ResNet-using-the-ResNET50V2-architecture-as-a-base">Build a ResNet using the ResNET50V2 architecture as a base<a class="anchor-link" href="#Build-a-ResNet-using-the-ResNET50V2-architecture-as-a-base">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8288,7 +8285,7 @@ weighted avg     0.9921    0.9917    0.9917       120
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Compile-and-train-the-model">Compile and train the model<a class="anchor-link" href="#Compile-and-train-the-model">¶</a></h2>
+<h2 id="Compile-and-train-the-ResNet">Compile and train the ResNet<a class="anchor-link" href="#Compile-and-train-the-ResNet">¶</a></h2>
 </div>
 </div>
 </div>
@@ -8297,15 +8294,16 @@ weighted avg     0.9921    0.9917    0.9917       120
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">model_ResNet</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">5e-5</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'categorical_accuracy'</span><span class="p">])</span>
 
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">))]</span>
+<span class="n">patience</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">epochs</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">epochs_to_show</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">patience</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">patience</span><span class="p">)]</span>
 <span class="n">custom_verbose</span> <span class="o">=</span> <span class="n">CustomVerbose</span><span class="p">(</span><span class="n">epochs_to_show</span><span class="p">)</span>
-<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">epochs</span><span class="o">/</span><span class="mi">10</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">early_stopping</span> <span class="o">=</span> <span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">'val_loss'</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">history_ResNet</span> <span class="o">=</span> <span class="n">model_ResNet</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">ds_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">ds_validation</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">custom_verbose</span><span class="p">,</span> <span class="n">early_stopping</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -8427,15 +8425,10 @@ Epoch 39: early stopping
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">X_test</span><span class="p">:</span>
-    <span class="n">prediction_proba</span> <span class="o">=</span> <span class="n">model_ResNet</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">y_pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">prediction_proba</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()))</span>
-
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model_ResNet</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
