@@ -14,12 +14,15 @@ Gemfile.lock
 node_modules
 package-lock.json
 
-# Ignore the vendor file and bundle for alternative installation
-vendor/
+# Ignore the vendor file at root level and bundle for alternative installation
+/vendor/
 .bundle/
 
 # Ignore folders related to IDEs
 .vscode/
+
+# Ignore files created by MacOS
+.DS_Store
 
 # Ignore directory created by python
 __pycache__/
