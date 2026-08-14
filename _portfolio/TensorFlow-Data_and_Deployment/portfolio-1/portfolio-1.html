@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TensorFlow.js Iris Classifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@latest/dist/lumen/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="text-center mb-4">
+            <h1 class="display-4">Iris Classifier</h1>
+            <p class="lead">Real-time neural network training and classification on the browser using TensorFlow.js</p>
+        </div>
+
+        <div class="row g-4">
+            <!-- Training Section -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Training</h2>
+                        <div class="mb-3"><span id="statusBadge" class="badge bg-dark">Idle</span></div>
+                        <h4>Hyperparameters</h4>
+
+                        <div class="control-group mb-3">
+                            <div class="row g-2">
+                                <div class="col-3">
+                                    <label class="form-label" style="margin: 0; font-weight: 400;">Epochs:</label>
+                                    <input type="number" id="epochs" class="form-control" style="width: 100px; display: inline-block;">
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label" style="margin: 0; font-weight: 400;">Learning Rate:</label>
+                                    <input type="number" id="learningRate" class="form-control" style="width: 100px; display: inline-block;">
+                                </div>
+                                <div class="col-3">
+                                    <label class="form-label" style="margin: 0; font-weight: 400;">Batch Size:</label>
+                                    <input type="number" id="batchSize" class="form-control" style="width: 100px; display: inline-block;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-group mb-3 d-flex gap-3">
+                            <button id="startBtn" class="btn btn-primary">Start Training</button>
+                            <button id="stopBtn" class="btn btn-danger" disabled>Stop</button>
+                            <button id="resetBtn" class="btn btn-warning">Reset</button>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="text-muted small">Current Epoch</div>
+                                        <div class="h4 text-primary" id="currentEpoch">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="text-muted small">Training Loss</div>
+                                        <div class="h4 text-primary" id="currentLoss">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div class="card text-center">
+                                    <div class="card-body">
+                                        <div class="text-muted small">Training Accuracy</div>
+                                        <div class="h4 text-primary" id="currentAccuracy">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-3">
+                            <div class="progress-bar" id="progressFill" style="width: 0%"></div>
+                        </div>
+
+                        <div class="chart-container" style="height: 250px;">
+                            <canvas id="lossChart"></canvas>
+                        </div>
+
+                        <div>
+                            <h4>Training Log</h4>
+                            <div class="bg-light text-dark p-3 rounded"
+                                style="height: 200px; overflow-y: auto; font-family: monospace; font-size: 0.9em;" id="logPanel">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Section -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Testing & Prediction</h2>
+
+                        <div class="control-group">
+                            <label class="form-label">Quick Test Cases</label>
+                            <div class="row g-2 mb-3">
+                                <div class="col-4">
+                                    <button class="btn btn-primary w-100 test-case-btn" data-case="setosa">
+                                        Setosa<br><small>4.4, 2.9, 1.4, 0.2</small>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-outline-primary w-100 test-case-btn" data-case="versicolor">
+                                        Versicolor<br><small>6.4, 3.2, 4.5, 1.5</small>
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-outline-primary w-100 test-case-btn" data-case="virginica">
+                                        Virginica<br><small>5.8, 2.7, 5.1, 1.9</small>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group mb-3">
+                            <label class="form-label">Or Enter Custom Values:</label>
+                            <div class="row g-2">
+                                <div class="col-2">
+                                    <label class="form-label small">Sepal Length</label>
+                                    <input type="number" id="sepalLength" class="form-control" placeholder="Sepal Length">
+                                </div>
+                                <div class="col-2">
+                                    <label class="form-label small">Sepal Width</label>
+                                    <input type="number" id="sepalWidth" class="form-control" placeholder="Sepal Width">
+                                </div>
+                                <div class="col-2">
+                                    <label class="form-label small">Petal Length</label>
+                                    <input type="number" id="petalLength" class="form-control" placeholder="Petal Length">
+                                </div>
+                                <div class="col-2">
+                                    <label class="form-label small">Petal Width</label>
+                                    <input type="number" id="petalWidth" class="form-control" placeholder="Petal Width">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="predictBtn" class="btn btn-primary" disabled>Predict</button>
+
+                        <div id="resultContainer" class="card mt-3" style="display: none;">
+                            <div class="card-body">
+                                <h5 class="card-title">Prediction Results</h5>
+                                <div id="resultContent"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="form-label mt-3">Prediction History</label>
+                            <ul class="list-group" id="historyContainer" style="max-height: 250px; overflow-y: auto;">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@latest/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="config.js"></script>
+    <script src="dom.js"></script>
+    <script src="utils.js"></script>
+    <script src="ui.js"></script>
+    <script src="chart.js"></script>
+    <script src="data.js"></script>
+    <script src="model.js"></script>
+    <script src="predict.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

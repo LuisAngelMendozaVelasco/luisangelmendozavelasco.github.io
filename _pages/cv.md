@@ -94,6 +94,9 @@ Cornell University
 - **Generative Adversarial Networks Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_Adversarial_Networks_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/XUNUKBF78WM8"></a><br>
 DeepLearning.AI
 
+- **Generative AI for NLP with PyTorch Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_AI_for_NLP_with_PyTorch_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/A20VDO3AGS86"></a><br>
+IBM Skills Network
+
 - **Generative AI for Software Development Skill Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Generative_AI_for_Software_Development_Skill_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/2H8R45ZDA6KS"></a><br>
 DeepLearning.AI
 
@@ -113,6 +116,9 @@ IBM Skills Network
 IBM Skills Network
 
 - **IBM Introduction to Machine Learning Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/IBM_Introduction_to_Machine_Learning_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/47KW8ACSUKLU"></a><br>
+IBM Skills Network
+
+- **IBM Deep Learning with PyTorch, Keras and Tensorflow Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/IBM_Deep_Learning_with_PyTorch_Keras_and_Tensorflow_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/DVZ5QFOJ6KVY"></a><br>
 IBM Skills Network
 
 - **Image Processing with MATLAB** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/Image_Processing_with_MATLAB"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=81d04d13-f4d5-44b9-b53e-228730791250"></a><br>
@@ -157,6 +163,9 @@ MathWorks
 - **MATLAB for Data Processing and Visualization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/MATLAB_Courses/tree/main/MATLAB_for_Data_Processing_and_Visualization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=721c9da1-e802-4607-aed0-100633963622"></a><br>
 MathWorks
 
+- **More Applied Data Science with Python Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/More_Applied_Data_Science_with_Python_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/5P1VAVLMQEWS"></a><br>
+University of Michigan
+
 - **Natural Language Processing Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Natural_Language_Processing_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/RRWWRBRAONFT"></a><br>
 DeepLearning.AI
 
@@ -165,6 +174,9 @@ The Linux Foundation
 
 - **Python for Everybody Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Python_for_Everybody_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/RRBCW3RGQUXQ"></a><br>
 University of Michigan
+
+- **PyTorch for Deep Learning Professional Certificate** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/PyTorch_for_Deep_Learning_Professional_Certificate"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/professional-cert/HA3G2O8JUAZD"></a><br>
+DeepLearning.AI
 
 - **Robotics Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Robotics_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/6TWA58JCTL8X"></a><br>
 University of Pennsylvania
@@ -189,6 +201,9 @@ DeepLearning.AI
 
 - **Virtual Reality Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Virtual_Reality_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/CMVDT7XKUJ3R"></a><br>
 University of London
+
+- **Web Applications for Everybody Specialization** <a class="icon fa fa-github-square" style="color:inherit;text-decoration:none" href="https://github.com/LuisAngelMendozaVelasco/Web_Applications_for_Everybody_Specialization"></a><a class="icon fa fa-file-pdf-o" style="color:inherit;text-decoration:none" href="https://coursera.org/verify/specialization/S7ZX4HV2DJPZ"></a><br>
+University of Michigan
 
 # Publications
 
